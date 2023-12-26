@@ -32,12 +32,14 @@ def main():
         choices = answers[i].get_text()
         right_answer = right_answers[i].get_text()
 
+        exists = False
         for i in quiz:
             if question == i.text:
-                continue
+                exists = True
 
-        quiz_q = QuizQuestion(question, choices, right_answer, True)
-        quiz.append(quiz_q)
+        if not exists:
+            quiz_q = QuizQuestion(question, choices, right_answer, True)
+            quiz.append(quiz_q)
 
 
     while len(quiz) > 0:
